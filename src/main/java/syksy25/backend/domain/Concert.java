@@ -1,5 +1,7 @@
 package syksy25.backend.domain;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,11 +14,10 @@ public class Concert {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String artist;
-    private String location;
-    private Integer date;
+    private String title;
+    private LocalDateTime date;
 
-    public Concert(){
+    public Concert() {
 
     }
 
@@ -28,32 +29,25 @@ public class Concert {
         this.id = id;
     }
 
-    public String getArtist() {
-        return artist;
+    public String getTitle() {
+        return title;
     }
 
-    public void setArtist(String artist) {
-        this.artist = artist;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public Integer getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Integer date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
     @Override
     public String toString() {
-        return "Concert [id=" + id + ", artist=" + artist + ", location=" + location + ", date=" + date + "]";
+        return "Concert [id=" + id + ", title=" + title + ", date=" + date + "]";
     }
+
 }
