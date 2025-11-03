@@ -1,0 +1,13 @@
+package syksy25.backend.web;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class ConcertController {
+
+    @RequestMapping("/index")
+    public String returnMessage() {
+        return "index";
+    }
+}
