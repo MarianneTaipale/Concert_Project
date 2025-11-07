@@ -19,7 +19,7 @@ public class WebSecurityConfig {
             )
         .formLogin(formlogin -> formlogin
             .loginPage("/login")
-            .defaultSuccessUrl("/index",true)
+            .defaultSuccessUrl("/concertlist",true)
             .permitAll()
         )
         .logout(logout -> logout

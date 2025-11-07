@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "app_user") // user on varattu
+@Table(name = "app_user") // pelkkä user on varattu
 public class User {
 
     @Id
@@ -27,6 +27,12 @@ public class User {
 
     public User(){
 
+    }
+
+    public User(String username, String passwordHash, String role) {
+        this.username = username;
+        this.passwordHash = passwordHash;
+        this.role = role;
     }
 
     public Long getId() {
