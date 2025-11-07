@@ -20,6 +20,12 @@ public class Venue {
 
     }
 
+    public Venue(String name, String address, String city) {
+        this.name = name;
+        this.address = address;
+        this.city = city;
+    }
+
     public Venue(Long venueId) {
         VenueId = venueId;
     }

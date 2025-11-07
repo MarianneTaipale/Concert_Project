@@ -25,12 +25,16 @@ public class WebSecurityConfig {
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/h2-console/**").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(formlogin -> formlogin
                         .loginPage("/login")
                         .defaultSuccessUrl("/concertlist", true)
                         .permitAll())
                 .logout(logout -> logout.permitAll());
+
+                http.headers(headers -> headers.frameOptions().disable());
+    http.csrf(csrf -> csrf.disable());
         return http.build();
     }
 
