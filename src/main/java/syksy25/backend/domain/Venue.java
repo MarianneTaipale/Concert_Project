@@ -20,6 +20,10 @@ public class Venue {
 
     }
 
+    public Venue(String name) {
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

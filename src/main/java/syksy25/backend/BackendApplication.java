@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import syksy25.backend.domain.Artist;
+import syksy25.backend.domain.Venue;
 import syksy25.backend.repos.ArtistRepository;
 import syksy25.backend.repos.ConcertRepository;
 import syksy25.backend.repos.VenueRepository;
@@ -26,6 +27,12 @@ public class BackendApplication {
 
 		aRepository.save(artist1);
 		aRepository.save(artist2);
+
+		Venue venue1 = new Venue("Hartwall Arena");
+		Venue venue2 = new Venue("Avicii Arena");
+
+		vRepository.save(venue1);
+		vRepository.save(venue2);
 		};
 	}
 }
