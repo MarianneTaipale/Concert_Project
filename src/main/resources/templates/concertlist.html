@@ -21,10 +21,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="concert: ${Concerts}">
-                <td th:each="${concert.Artist}"></td>
-                <td th:each="${concert.Date}"></td>
-
+            <tr th:each="concert : ${concerts}">
+                <td th:text="${concert.artist.name}">Artist name</td>
+                <td th:text="${concert.date}">Date</td>
+                <td th:text="${concert.venue.name}">Venue</td>
             </tr>
         </tbody>
     </table>

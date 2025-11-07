@@ -25,4 +25,9 @@ public class ArtistController {
         return "concertlist";
     }
 
+    @RequestMapping(value = "/login")
+    public String login(){
+        return "login";
+    }
+
 }
