@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concerts</title>
+</head>
+<body>
+    <h1>Concerts</h1>
+
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign out" class="btn btn-sm btn-danger"/>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Artist</th>
+                <th>Date</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+    </table>
+    
+</body>
+</html>
