@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Bean;
 import syksy25.backend.domain.Artist;
 import syksy25.backend.domain.Venue;
 import syksy25.backend.repos.ArtistRepository;
-import syksy25.backend.repos.ConcertRepository;
 import syksy25.backend.repos.VenueRepository;
 
 @SpringBootApplication
@@ -19,7 +18,7 @@ public class BackendApplication {
 	}
 
 	@Bean
-	CommandLineRunner demo(ConcertRepository cRepository, ArtistRepository aRepository, VenueRepository vRepository){
+	CommandLineRunner demo( ArtistRepository aRepository, VenueRepository vRepository){
 		return(args) -> {
 
 		Artist artist1 = new Artist("Antti Tuisku");
