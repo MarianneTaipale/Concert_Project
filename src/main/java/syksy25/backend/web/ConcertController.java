@@ -52,7 +52,6 @@ public class ConcertController {
     // tallenna muutokset
     @PostMapping("/edit")
     public String saveEdit(@ModelAttribute Concert concert) {
-
         Artist artist = artistRepository.findById(concert.getArtist().getId())
            .orElseThrow(() -> new IllegalArgumentException("Invalid artist ID"));
         Venue venue = venueRepository.findById(concert.getVenue().getId())
@@ -85,4 +84,10 @@ public class ConcertController {
         return "login";
     }
 
+    //poista konsertti
+    @RequestMapping(value = "/delete/{id}",method = RequestMethod.GET)
+    public String deleteConcert(@PathVariable("id") Long concertId){
+        repository.deleteById(concertId);
+        return "redirect:/concertlist";
+    }
 }

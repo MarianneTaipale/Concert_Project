@@ -7,6 +7,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotNull;
+
 
 @Entity
 public class Concert {
@@ -16,11 +18,14 @@ public class Concert {
     private Long id;
 
     @ManyToOne
+    @NotNull(message = "Enter artists name")
     private Artist artist;
 
     @ManyToOne
+    @NotNull(message = "Enter venue")
     private Venue venue;
 
+    @NotNull(message = "Date is required")
     private LocalDate date;
 
     public Concert(){

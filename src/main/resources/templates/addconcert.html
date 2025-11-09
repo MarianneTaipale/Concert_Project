@@ -14,23 +14,24 @@
 
             <div>
                 <label>Artist:</label>
-                <input type="text" name="artistName"/>
+                <input type="text" name="artistName" />
             </div>
 
             <div>
                 <label>Venue:</label>
-                <input type="text" name="venueName"/>
+                <input type="text" name="venueName" />
             </div>
 
             <div>
                 <label>Date:</label>
                 <input type="date" name="date" required />
             </div>
-
+            <br>
             <button type="submit">Save</button>
         </form>
 
-        <br>
+        <a th:href="@{/concertlist}">Back to concert list</a>
+
     </div>
     </div>
 </body>
