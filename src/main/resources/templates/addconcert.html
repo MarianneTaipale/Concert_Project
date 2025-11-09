@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add categories</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Add concert</h2>
+        <form th:action="@{/addconcert}" method="post">
+
+            <div>
+                <label>Artist:</label>
+                <input type="text" name="artistName"/>
+            </div>
+
+            <div>
+                <label>Venue:</label>
+                <input type="text" name="venueName"/>
+            </div>
+
+            <div>
+                <label>Date:</label>
+                <input type="date" name="date" required />
+            </div>
+
+            <button type="submit">Save</button>
+        </form>
+
+        <br>
+    </div>
+    </div>
+</body>
+
+</html>

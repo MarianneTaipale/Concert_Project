@@ -10,7 +10,7 @@ public class Venue {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long VenueId;
+    private Long id;
 
     private String name;
     private String address;
@@ -26,9 +26,7 @@ public class Venue {
         this.city = city;
     }
 
-    public Venue(Long venueId) {
-        VenueId = venueId;
-    }
+    
 
     public Venue(String name) {
         this.name = name;
@@ -60,19 +58,17 @@ public class Venue {
     }
 
 
-    public Long getVenueId() {
-        return VenueId;
-    }
-
-    public void setVenueId(Long venueId) {
-        VenueId = venueId;
+    public Long getId() {
+        return id;
     }
 
     @Override
     public String toString() {
-        return "Venue [VenueId=" + VenueId + ", name=" + name + ", address=" + address + ", city=" + city + "]";
+        return "Venue [VenueId=" + id + ", name=" + name + ", address=" + address + ", city=" + city + "]";
     }
 
-    
+    public Venue(Long id) {
+        this.id = id;
+    }
     
 }

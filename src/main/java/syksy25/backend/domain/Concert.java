@@ -23,6 +23,10 @@ public class Concert {
 
     private LocalDate date;
 
+    public Concert(){
+
+    }
+
     public Concert(Artist artist, Venue venue, LocalDate date) {
         this.artist = artist;
         this.venue = venue;

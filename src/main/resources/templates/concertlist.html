@@ -21,10 +21,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="artist : ${concerts}">
-                <td th:text="${artist.name}">Artist name</td>
-                <td th:text="${artist.date}">Date</td>
-                <td th:text="${venue.name}">Venue</td>
+            <tr th:each="concert : ${concerts}">
+                <td th:text="${concert.artist.name}">Artist name</td>
+                <td th:text="${concert.date}">Date</td>
+                <td th:text="${concert.venue.name}">Venue</td>
+                <td>
+                    <a th:href="@{/edit/{id}(id=${concert.id})}">Edit</a>
+                </td>
+                <td>
+                    <a th:href="@{/addconcert}">Add</a>
+                </td>
             </tr>
         </tbody>
     </table>

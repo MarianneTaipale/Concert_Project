@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Concert</title>
+</head>
+
+<body>
+    <h1>
+        Edit Concert
+    </h1>
+
+    <form th:action="@{/edit}" method="post">
+        <input type="hidden" name="concertId" th:value="${concert.id}" />
+
+        <div>
+            <label>Artist:</label>
+            <input type="text" name="artistName" th:value="${concert.artist.name}" required />
+        </div>
+
+        <div>
+            <label>Venue:</label>
+            <input type="text" name="venueName" th:value="${concert.venue.name}" required />
+        </div>
+
+        <div>
+            <label>Date:</label>
+            <input type="date" name="date" th:value="${concert.date}" required />
+        </div>
+
+        <button type="submit">Save Changes</button>
+    </form>
+
+    <a th:href="@{/concertlist}">Back to concert list</a>
+</body>
+
+</html>
