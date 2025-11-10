@@ -84,15 +84,15 @@ public class ConcertController {
         return "redirect:/concertlist";
     }
 
-    @RequestMapping(value = "/login")
-    public String login() {
-        return "login";
-    }
-
     // poista konsertti
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteConcert(@PathVariable("id") Long concertId) {
         repository.deleteById(concertId);
         return "redirect:/concertlist";
+    }
+    
+    @RequestMapping(value = "/login")
+    public String login() {
+        return "login";
     }
 }
