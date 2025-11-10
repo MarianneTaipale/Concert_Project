@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import syksy.backend.dto.ConcertDto;
 import syksy25.backend.domain.Artist;
 import syksy25.backend.domain.Concert;
 import syksy25.backend.domain.Venue;
@@ -45,7 +44,7 @@ public class ConcertRestController {
     }
 
     // lisää konsertti
-    @PostMapping
+    @PostMapping("/api/concerts")
     public Concert addConcert(@RequestBody Concert concert) {
 
         Artist artist = concert.getArtist();

@@ -25,8 +25,8 @@ public class WebSecurityConfig {
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/", "/concertlist", "/api/**", "/h2-console/**").permitAll()
-                        .requestMatchers("/edit/**", "/addconcert/**").hasAnyAuthority("USER", "ADMIN")
+                        .requestMatchers("/", "/concertlist", "/api/**").permitAll()
+                        .requestMatchers("/edit/**", "/addconcert/**", "/h2-console/**").hasAnyAuthority("USER", "ADMIN")
                         .requestMatchers("/delete/**").hasAuthority("ADMIN")
                         .anyRequest().authenticated())
                 .formLogin(formlogin -> formlogin
