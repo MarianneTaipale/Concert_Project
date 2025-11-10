@@ -1,16 +1,25 @@
-#
-# Mvn Build
-#
-FROM maven:3.8.6-eclipse-temurin-17-focal AS build
-COPY src /home/app/src
-COPY pom.xml /home/app
-RUN mvn -f /home/app/pom.xml clean package
+FROM eclipse-temurin:17-jdk-focal AS builder
 
-#
-# Jar Package
-#
-FROM eclipse-temurin:17-jre-focal
-# StudentListSecureDB-0.0.1-SNAPSHOT.jar  = <artifactId>-<version>.jar (pom.xml)
-COPY --from=build /home/app/target/StudentListSecureDB-0.0.1-SNAPSHOT.jar /usr/local/lib/studentlistsecuredb.jar
+WORKDIR /opt/app
+
+COPY .mvn/ .mvn
+COPY mvnw pom.xml ./
+RUN chmod +x ./mvnw
+
+RUN ./mvnw dependency:go-offline
+
+COPY ./src ./src
+
+RUN ./mvnw clean install -DskipTests
+
+RUN cp target/*.jar /opt/app/app.jar
+
+FROM eclipse-temurin:17-jre-alpine
+
+WORKDIR /opt/app
+
+COPY --from=builder /opt/app/app.jar /opt/app/app.jar
+
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "/usr/local/lib/studentlistsecuredb.jar"]
+
+ENTRYPOINT ["java", "-jar", "/opt/app/app.jar"]
