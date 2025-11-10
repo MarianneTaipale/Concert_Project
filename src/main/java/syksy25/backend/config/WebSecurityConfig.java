@@ -25,20 +25,21 @@ public class WebSecurityConfig {
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/concertlist","/api/**", "/h2-console/**").permitAll()
+                        .requestMatchers("/", "/concertlist", "/api/**", "/h2-console/**").permitAll()
+                        .requestMatchers("/edit/**", "/addconcert/**").hasAnyAuthority("USER", "ADMIN")
+                        .requestMatchers("/delete/**").hasAuthority("ADMIN")
                         .anyRequest().authenticated())
                 .formLogin(formlogin -> formlogin
                         .loginPage("/login")
                         .defaultSuccessUrl("/concertlist", true)
                         .permitAll())
                 .logout(logout -> logout
-                    .logoutSuccessUrl("/concertlist")
-                    .permitAll()
-                    );
-    
-                http.headers(headers -> headers.frameOptions().disable());
-                http.csrf(csrf -> csrf.disable());
-                return http.build();
+                        .logoutSuccessUrl("/concertlist")
+                        .permitAll());
+
+        http.headers(headers -> headers.frameOptions().disable());
+        http.csrf(csrf -> csrf.disable());
+        return http.build();
     }
 
     @Autowired

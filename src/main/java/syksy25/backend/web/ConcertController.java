@@ -32,6 +32,11 @@ public class ConcertController {
         this.repository = repository;
     }
 
+    @GetMapping("/")
+    public String homeRedirect() {
+        return "redirect:/concertlist";
+    }
+
     @RequestMapping("/concertlist")
     public String concertList(Model model) {
         model.addAttribute("concerts", repository.findAll()); // Haetaan tietokannasta kirjat
@@ -53,9 +58,9 @@ public class ConcertController {
     @PostMapping("/edit")
     public String saveEdit(@ModelAttribute Concert concert) {
         Artist artist = artistRepository.findById(concert.getArtist().getId())
-           .orElseThrow(() -> new IllegalArgumentException("Invalid artist ID"));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid artist ID"));
         Venue venue = venueRepository.findById(concert.getVenue().getId())
-            .orElseThrow(() -> new IllegalArgumentException("Invalid venue ID"));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid venue ID"));
 
         concert.setArtist(artist);
         concert.setVenue(venue);
@@ -84,9 +89,9 @@ public class ConcertController {
         return "login";
     }
 
-    //poista konsertti
-    @RequestMapping(value = "/delete/{id}",method = RequestMethod.GET)
-    public String deleteConcert(@PathVariable("id") Long concertId){
+    // poista konsertti
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String deleteConcert(@PathVariable("id") Long concertId) {
         repository.deleteById(concertId);
         return "redirect:/concertlist";
     }
