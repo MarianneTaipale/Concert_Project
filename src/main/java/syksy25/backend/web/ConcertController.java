@@ -69,7 +69,7 @@ public class ConcertController {
         return "redirect:/concertlist";
     }
 
-    // lisää konsertti
+    // konsertti lomakkeen palautus
     @RequestMapping(value = "/addconcert", method = RequestMethod.GET)
     public String showConcertForm(Model model) {
         model.addAttribute("concert", new Concert());
@@ -78,6 +78,7 @@ public class ConcertController {
         return "addconcert";
     }
 
+    // tallentaa uuden konsertin tietokantaan
     @RequestMapping(value = "/addconcert", method = RequestMethod.POST)
     public String saveConcert(@ModelAttribute Concert concert) {
         repository.save(concert);

@@ -10,16 +10,22 @@
 <body>
     <div class="container">
         <h2>Add concert</h2>
-        <form th:action="@{/addconcert}" method="post">
+        <form th:action="@{/addconcert}" method="post" th:object="${concert}">
 
             <div>
                 <label>Artist:</label>
-                <input type="text" name="artistName" />
+                <select th:field="*{artist}">
+                    <option th:each="artist: ${artists}" th:value="${artist.id}"
+                        th:text="${artist.name}"></option>
+                </select>
             </div>
 
             <div>
                 <label>Venue:</label>
-                <input type="text" name="venueName" />
+                <select th:field="*{venue}">
+                    <option th:each="venue: ${venues}" th:value="${venue.id}"
+                     th:text="${venue.name}"></option>
+                </select>
             </div>
 
             <div>
